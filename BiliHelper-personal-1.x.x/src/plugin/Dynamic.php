@@ -292,7 +292,7 @@ class Dynamic
         // 过滤UID
         $uid_list = self::$store->get("Common.uid_list");
         $custom_uid_list = empty($uids = getConf('blacklist_uids', 'dynamic')) ? [] : explode(',', $uids);
-        if (array_key_exists((int)$item['uid'], $uid_list) || array_key_exists((int)$item['uid'], $custom_uid_list)) {
+        if (array_key_exists((int)$item['uid'], $uid_list) || array_key_exists($item['uid'], $custom_uid_list)) {
             Log::warning("当前动态#{$item['did']}触发UP黑名单过滤 {$item['uid']}");
             return true;
         }
